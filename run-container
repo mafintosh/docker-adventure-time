@@ -9,4 +9,10 @@ wait_for_fs () {
 }
 
 wait_for_fs
+
+if [ -f /welcome.txt ]; then
+  cat /welcome.txt | format --host "$HOST" --container-id "$CONTAINER_ID" --port "$PORT" > /root/welcome.txt
+  cat /root/welcome.txt
+fi
+
 /bin/bash --rcfile /.bashrc
