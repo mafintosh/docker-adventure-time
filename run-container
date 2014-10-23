@@ -15,4 +15,4 @@ if [ -f /welcome.txt ]; then
   cat /root/welcome.txt
 fi
 
-/bin/bash --rcfile /.bashrc
+/bin/bash --rcfile /root/.bashrc
