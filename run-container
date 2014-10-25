@@ -15,4 +15,9 @@ if [ -f /welcome.txt ]; then
   cat /root/welcome.txt
 fi
 
+if [ -f /.bashrc ]; then
+  # in case /root is a volume and .bashrc is stored in /
+  cp /.bashrc /root/.bashrc
+fi
+
 /bin/bash --rcfile /root/.bashrc
