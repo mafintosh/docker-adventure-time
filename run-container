@@ -1,5 +1,5 @@
 #!/bin/bash
-expose-fs /root --quiet &
+expose-fs /root --quiet --port=$PORT_8441 &
 
 wait_for_fs () {
   if ! curl -fs localhost:8441 > /dev/null; then
