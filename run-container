@@ -2,7 +2,7 @@
 expose-fs /root --quiet --port=$PORT_8441 &
 
 wait_for_fs () {
-  if ! curl -fs localhost:8441 > /dev/null; then
+  if ! curl -fs localhost:$PORT_8441 > /dev/null; then
     sleep 0.2
     wait_for_fs
   fi
