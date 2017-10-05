@@ -10,14 +10,13 @@ wait_for_fs () {
 
 wait_for_fs
 
-if [ -f /welcome.txt ]; then
-  cat /welcome.txt | format --host "$HOST" --container-id "$CONTAINER_ID" --port "$PORT" > /root/welcome.txt
-  cat /root/welcome.txt
-fi
-
-if [ -f /.bashrc ]; then
-  # in case /root is a volume and .bashrc is stored in /
-  cp /.bashrc /root/.bashrc
+if [ -d /workshop ]; then
+  rsync -r --ignore-existing /workshop/ /root
+  
+  if [ -f /workshop/welcome.txt ]; then
+    cat /workshop/welcome.txt | format --host "$HOST" --container-id "$CONTAINER_ID" --port "$PORT" > /root/welcome.txt
+    cat /root/welcome.txt
+  fi
 fi
 
 /bin/bash --rcfile /root/.bashrc
